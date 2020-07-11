@@ -10,6 +10,7 @@ interface User {
 }
 
 const UserList: React.FC = () => {
+
   const { data, mutate } = useFetch<User[]>('users');
 
   const handleNameChange = useCallback((id: number) => {
@@ -24,7 +25,7 @@ const UserList: React.FC = () => {
     })
 
     mutate(updatedUsers, false)
-    mutateGlobal(`users/${id}`, { id, name: 'Bartolomeu' })
+    mutateGlobal(`users/${id}`, { id, name: 'Bartolomeu' }) //para fazer mutação em todos os lugares que tem o cache
   }, [data, mutate]);
 
   if (!data) {
